@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:Dice.ViewModels"
+             x:Class="Dice.MainPage">
+    <ContentPage.BindingContext>
+        <viewmodel:MainViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <Style TargetType="Button" x:Key="GoButton">
+            <Setter Property="BackgroundColor" Value="Lime" />
+        </Style>
+    </ContentPage.Resources>
+    <Grid BackgroundColor="{DynamicResource BgColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="50" />
+        </Grid.ColumnDefinitions>
+        <Label 
+            Text="{Binding Number}"
+            HorizontalOptions="Center"
+            VerticalOptions="CenterAndExpand"
+            FontSize="100"
+            Grid.Row="0"
+            Grid.Column="0" />
+        <Button
+            Text="Roll"
+            Command="{Binding Roll}"
+            Grid.Row="2"
+            Style="{StaticResource GoButton}"
+            Grid.Column="0"
+            Grid.ColumnSpan="2" />
+        <Slider 
+            Maximum="100"
+            Minimum="2"
+            Grid.Column="0"
+            Grid.Row="1"
+            MinimumTrackColor="#ff0000"
+            MaximumTrackColor="Red"
+            ThumbColor="Crimson"
+            Value="{Binding Max}"
+            />
+        <Label 
+            Text="{Binding Max}" 
+            Grid.Row="1"
+            Grid.Column="1"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            />
+        <ScrollView
+            Grid.Row="0"
+            Grid.Column="1">
+            <StackLayout Orientation="Vertical" HorizontalOptions="Fill" VerticalOptions="End">
+                <Button Text="4" Command="{Binding SetMax}" CommandParameter="4" />
+                <Button Text="6" Command="{Binding SetMax}" CommandParameter="6" />
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+
+</ContentPage>
