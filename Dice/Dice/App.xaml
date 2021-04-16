@@ -4,7 +4,22 @@
              x:Class="Dice.App">
     <Application.Resources>
         <ResourceDictionary>
-            <Color x:Key="BgColor">#aaaaaa</Color>
+            <Color x:Key="BackgroundColor">LightGray</Color>
+            <Color x:Key="TextColor">Black</Color>
+            <Color x:Key="AccentTextColor">White</Color>
+            <Color x:Key="AccentBackgroundColor">Crimson</Color>
+            <Style TargetType="Button" x:Key="GoButton">
+                <Setter Property="BackgroundColor" Value="{StaticResource AccentBackgroundColor}" />
+                <Setter Property="TextColor" Value="{StaticResource AccentTextColor}" />
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+            </Style>
+            <Style TargetType="Slider">
+                <Setter Property="ThumbColor" Value="{StaticResource AccentBackgroundColor}" />
+                <Setter Property="MaximumTrackColor" Value="{StaticResource TextColor}" />
+                <Setter Property="MinimumTrackColor" Value="{StaticResource AccentBackgroundColor}" />
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

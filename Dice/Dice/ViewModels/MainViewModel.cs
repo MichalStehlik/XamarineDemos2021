@@ -43,7 +43,7 @@ namespace Dice.ViewModels
                 });
         }
 
-        public int Max { get { return _max; } set { _max = value; if (SetMax != null) SetMax.ChangeCanExecute(); NotifyPropertyChanged(); } }
+        public int Max { get { return _max; } set { _max = value; Number = _rand.Next(Max); if (SetMax != null) SetMax.ChangeCanExecute(); NotifyPropertyChanged(); } }
 
         public int Number { get { return _number; } set { _number = value; NotifyPropertyChanged(); } }
 

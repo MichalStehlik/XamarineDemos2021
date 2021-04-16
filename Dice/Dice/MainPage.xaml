@@ -7,11 +7,8 @@
         <viewmodel:MainViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Resources>
-        <Style TargetType="Button" x:Key="GoButton">
-            <Setter Property="BackgroundColor" Value="Lime" />
-        </Style>
     </ContentPage.Resources>
-    <Grid BackgroundColor="{DynamicResource BgColor}">
+    <Grid BackgroundColor="{StaticResource BackgroundColor}">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="50" />
@@ -27,6 +24,7 @@
             VerticalOptions="CenterAndExpand"
             FontSize="100"
             Grid.Row="0"
+            FontAttributes="Bold"
             Grid.Column="0" />
         <Button
             Text="Roll"
@@ -56,8 +54,15 @@
             Grid.Row="0"
             Grid.Column="1">
             <StackLayout Orientation="Vertical" HorizontalOptions="Fill" VerticalOptions="End">
-                <Button Text="4" Command="{Binding SetMax}" CommandParameter="4" />
-                <Button Text="6" Command="{Binding SetMax}" CommandParameter="6" />
+                <Button Text="2" Command="{Binding SetMax}" CommandParameter="{Binding Source={RelativeSource Self}, Path=Text}" />
+                <Button Text="4" Command="{Binding SetMax}" CommandParameter="{Binding Source={RelativeSource Self}, Path=Text}" />
+                <Button Text="6" Command="{Binding SetMax}" CommandParameter="{Binding Source={RelativeSource Self}, Path=Text}" />
+                <Button Text="8" Command="{Binding SetMax}" CommandParameter="{Binding Source={RelativeSource Self}, Path=Text}" />
+                <Button Text="10" Command="{Binding SetMax}" CommandParameter="{Binding Source={RelativeSource Self}, Path=Text}" />
+                <Button Text="12" Command="{Binding SetMax}" CommandParameter="{Binding Source={RelativeSource Self}, Path=Text}" />
+                <Button Text="16" Command="{Binding SetMax}" CommandParameter="{Binding Source={RelativeSource Self}, Path=Text}" />
+                <Button Text="20" Command="{Binding SetMax}" CommandParameter="{Binding Source={RelativeSource Self}, Path=Text}" />
+                <Button Text="24" Command="{Binding SetMax}" CommandParameter="{Binding Source={RelativeSource Self}, Path=Text}" />
             </StackLayout>
         </ScrollView>
     </Grid>
