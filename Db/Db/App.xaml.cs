@@ -1,4 +1,5 @@
-﻿using Db.Services;
+﻿using Db.Models;
+using Db.Services;
 using Db.Views;
 using System;
 using Xamarin.Forms;
@@ -8,15 +9,17 @@ namespace Db
 {
     public partial class App : Application
     {
-        //public static AppDbContext Db;
+        public static AppDbContext Db;
+
         public App(string dbPath)
         {
             InitializeComponent();
 
             //DependencyService.Register<MockDataStore>();
-            Db = new AppDbContext(dbPath);
+            Db = new AppDbContext(/*dbPath*/);
             DependencyService.Register<AppDbContext>();
-            DependencyService.Register<ItemStore>();
+            ItemStore items = new ItemStore();
+            DependencyService.Register<IDataStore<Item>, ItemStore>();
             MainPage = new AppShell();
 
         }

@@ -2,8 +2,10 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 
 namespace Db.Services
 {
@@ -12,9 +14,10 @@ namespace Db.Services
         private string _dbPath;
         public DbSet<Item> Items { get; set; }
 
-        public AppDbContext(string dbPath)
+        public AppDbContext(/*string dbPath*/)
         {
-            _dbPath = dbPath;
+            //_dbPath = dbPath;
+            _dbPath = Path.Combine(FileSystem.AppDataDirectory, "items.sqlite");
             Database.EnsureCreated();
         }
 

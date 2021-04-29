@@ -26,6 +26,11 @@ namespace Db.ViewModels
             ItemTapped = new Command<Item>(OnItemSelected);
 
             AddItemCommand = new Command(OnAddItem);
+
+            /*MessagingCenter.Subscribe<NewItemPage>(this, "UpdateItems", (sender) =>
+            {
+                LoadItemsCommand.Execute(null);
+            });*/
         }
 
         async Task ExecuteLoadItemsCommand()
@@ -55,6 +60,7 @@ namespace Db.ViewModels
         {
             IsBusy = true;
             SelectedItem = null;
+            LoadItemsCommand.Execute(null);
         }
 
         public Item SelectedItem

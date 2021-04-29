@@ -1,4 +1,5 @@
 ﻿using Db.Models;
+using Db.Views;
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -12,7 +13,17 @@ namespace Db.ViewModels
         private string itemId;
         private string text;
         private string description;
+
+        public ItemDetailViewModel()
+        {
+            DeleteItemCommand = new Command(OnDeleteItem);
+            EditItemCommand = new Command(OnEditItem);
+        }
+
         public string Id { get; set; }
+
+        public Command DeleteItemCommand { get; }
+        public Command EditItemCommand { get; }
 
         public string Text
         {
@@ -52,6 +63,20 @@ namespace Db.ViewModels
             {
                 Debug.WriteLine("Failed to Load Item");
             }
+        }
+
+        private async void OnDeleteItem(object obj)
+        {
+            if (await DataStore.DeleteItemAsync(itemId))
+            {
+                //MessagingCenter.Send(this, "UpdateItems");
+                await Shell.Current.GoToAsync("..");
+            }           
+        }
+
+        private async void OnEditItem(object obj)
+        {
+            await Shell.Current.GoToAsync($"{nameof(EditItemPage)}?{nameof(EditItemViewModel.ItemId)}={ItemId}");
         }
     }
 }
