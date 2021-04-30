@@ -12,7 +12,21 @@ namespace Db.ViewModels
         private string itemId;
         private string text;
         private string description;
+
+        public ItemDetailViewModel()
+        {
+            DeleteItemCommand = new Command(async (obj)=> 
+            {
+                if (await DataStore.DeleteItemAsync(itemId))
+                {
+                    await Shell.Current.GoToAsync("..");
+                }
+            });
+        }
+
         public string Id { get; set; }
+
+        public Command DeleteItemCommand { get; }
 
         public string Text
         {

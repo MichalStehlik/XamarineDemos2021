@@ -39,6 +39,7 @@ namespace Db.Services
                 if (item != null)
                 {
                     _db.Items.Remove(item);
+                    await _db.SaveChangesAsync();
                 }
                 return true;
             }
