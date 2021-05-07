@@ -1,12 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Sensors.Views.CompassPage">
+             xmlns:vm="clr-namespace:Sensors.ViewModels"
+             x:Class="Sensors.Views.CompassPage"
+             Title="{Binding Title}">
+    <ContentPage.BindingContext>
+        <vm:CompassViewModel />
+    </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
+            <Label Text="{Binding MagneticNorth}"
+                FontSize="Large"   
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+            <Button Text="{Binding TriggerText}" Command="{Binding ToggleCompassCommand}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
