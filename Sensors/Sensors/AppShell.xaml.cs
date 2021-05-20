@@ -15,6 +15,7 @@ namespace Sensors
             Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
             Routing.RegisterRoute(nameof(CompassPage), typeof(CompassPage));
             Routing.RegisterRoute(nameof(LocationPage), typeof(LocationPage));
+            Routing.RegisterRoute(nameof(MapPage), typeof(MapPage));
         }
 
     }

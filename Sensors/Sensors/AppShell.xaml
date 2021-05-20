@@ -34,6 +34,7 @@
         <ShellContent Title="Browse" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:ItemsPage}" />
         <ShellContent Title="Compass" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:CompassPage}" />
         <ShellContent Title="Location" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:LocationPage}" />
+        <ShellContent Title="Map" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:MapPage}" />
     </TabBar>
 
     <!--

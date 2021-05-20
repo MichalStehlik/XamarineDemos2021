@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Sensors.ViewModels" xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             x:Class="Sensors.Views.MapPage">
+    <ContentPage.BindingContext>
+        <vm:MapViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="24"/>
+                <RowDefinition Height="24" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="48" />
+            </Grid.RowDefinitions>
+            <Label Text="{Binding Latitude}" Grid.Row="0" Margin="5"/>
+            <Label Text="{Binding Longitude}" Grid.Row="1" Margin="5"/>
+            <ContentView Content="{Binding Map}" Grid.Row="2"/>
+            <Button Text="Go to Liberec" Grid.Row="3" Command="{Binding ZeroCommand}"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

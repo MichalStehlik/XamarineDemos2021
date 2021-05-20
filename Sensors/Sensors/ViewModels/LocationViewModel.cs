@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sensors.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,7 @@ namespace Sensors.ViewModels
 
         public Command GetCoordinatesCommand { get; set; }
         public Command ShowPointOnMapCommand { get; set; }
+        public Command ShowOnLocalMapCommand { get; }
         public Location Location
         {
             get
@@ -32,6 +34,7 @@ namespace Sensors.ViewModels
             {
                 SetProperty(ref _location, value);
                 ShowPointOnMapCommand.ChangeCanExecute();
+                ShowOnLocalMapCommand.ChangeCanExecute();
             }
         }
 
@@ -140,6 +143,20 @@ namespace Sensors.ViewModels
                     if (Location != null)
                     {
                         await Map.OpenAsync(Location, new MapLaunchOptions { Name = _placemark != null ? (_placemark.Thoroughfare + " " + _placemark.SubThoroughfare) : "Place", NavigationMode = NavigationMode.None });
+                    }
+                },
+                () =>
+                {
+                    return Location != null;
+                }
+            );
+
+            ShowOnLocalMapCommand = new Command(
+                async () =>
+                {
+                    if (Location != null)
+                    {
+                        await Shell.Current.GoToAsync($"{nameof(MapPage)}?{nameof(MapViewModel.Latitude)}={Location.Latitude}&{nameof(MapViewModel.Longitude)}={Location.Longitude}");
                     }
                 },
                 () =>
